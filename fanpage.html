@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Justin Bieber Fanpage</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f8f6f2;
+      color: #333;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #222;
+      padding: 15px;
+      z-index: 1000;
+    }
+    nav ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      list-style: none;
+    }
+    nav ul li {
+      margin: 0 15px;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #ff4081;
+    }
+
+    /* General Section Style */
+    section {
+      padding: 80px 20px;
+      text-align: center;
+      margin: 40px auto;
+      max-width: 1000px;
+      background: rgba(255, 255, 255, 0.8); /* translucent */
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 400px;
+      background: url("justin1.jpg") center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-align: center;
+      border-radius: 0 0 20px 20px;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    /* Gallery */
+    .gallery-container {
+      display: flex;
+      overflow-x: auto;
+      gap: 15px;
+      padding: 10px;
+    }
+    .gallery-container img {
+      height: 250px;
+      border-radius: 12px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .gallery-container img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(255, 64, 129, 0.7);
+    }
+
+    /* Fans section layout */
+    .fans-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    .fan-box {
+      flex: 1 1 300px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .fan-box iframe {
+      width: 100%;
+      border-radius: 10px;
+      border: none;
+    }
+
+    /* Social Links */
+    .socials a {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      border-radius: 20px;
+      background: #ff4081;
+      color: white;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .socials a:hover {
+      background: #e91e63;
+    }
+
+    /* Love Letter Form */
+    .love-letter textarea {
+      width: 80%;
+      height: 150px;
+      padding: 15px;
+      border-radius: 10px;
+      border: 2px solid #ccc;
+      font-size: 16px;
+      resize: none;
+    }
+    .love-letter button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 20px;
+      background: #ff4081;
+      color: white;
+      cursor: pointer;
+    }
+    .love-letter button:hover {
+      background: #e91e63;
+    }
+
+    /* Floating Like Button */
+    .like-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: white;
+      color: black;
+      border: 2px solid #ccc;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      z-index: 2000;
+    }
+    .like-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+    }
+    .like-counter {
+      position: fixed;
+      bottom: 90px;
+      right: 25px;
+      font-size: 18px;
+      background: white;
+      padding: 5px 12px;
+      border-radius: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    /* Floating heart animation */
+    .floating-heart {
+      position: fixed;
+      font-size: 24px;
+      animation: floatUp 1.5s ease forwards;
+      pointer-events: none;
+    }
+    @keyframes floatUp {
+      0% { opacity: 1; transform: translateY(0) scale(1); }
+      100% { opacity: 0; transform: translateY(-100px) scale(1.5); }
+    }
+
+    /* Sparkles */
+    .sparkle {
+      position: absolute;
+      font-size: 14px;
+      pointer-events: none;
+      animation: sparkleAnim 1s forwards;
+    }
+    @keyframes sparkleAnim {
+      from { opacity: 1; transform: translateY(0); }
+      to { opacity: 0; transform: translateY(-30px); }
+    }
+    
+
+    /* Socials Section */
+    .socials-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    }
+
+    .social-card {
+    flex: 1 1 250px;
+    max-width: 300px;
+    background: rgba(255,255,255,0.75);
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .social-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    }
+
+    .social-card h3 {
+    margin: 10px 0 5px;
+    }
+
+    .social-card p {
+    font-size: 14px;
+    color: #555;
+    }
+
+    .social-card a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background: #ff4081;
+    color: white;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: background 0.3s;
+    }
+
+    .social-card a:hover {
+    background: #e91e63;
+    }
+
+    .social-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#fans">Fans</a></li>
+      <li><a href="#socials">Socials</a></li>
+      <li><a href="#love">Love Letters</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <h1>Welcome to Justin Bieber Fanpage</h1>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery">
+    <h2>Photo Gallery</h2>
+    <div class="gallery-container">
+      <img src="justin1.jpg" alt="Justin 1">
+      <img src="justin2.jpg" alt="Justin 2">
+      <img src="justin3.jpg" alt="Justin 3">
+      <img src="justin4.jpg" alt="Justin 4">
+      <img src="justin5.jpg" alt="Justin 5">
+    </div>
+  </section>
+
+  <!-- Fans Section -->
+  <section id="fans">
+    <h2>Fans & Community</h2>
+    <div class="fans-container">
+      <!-- Updates Box -->
+      <div class="fan-box">
+        <h3>Updates</h3>
+        <p>🎵 New single coming soon!</p>
+        <p>📅 Stay tuned for tour dates.</p>
+      </div>
+      <!-- Stream Box -->
+      <div class="fan-box">
+        <h3>Stream Justin’s Music</h3>
+        <iframe src="https://www.youtube.com/embed/kffacxfA7G4" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/fRh_vgS2dFE" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Socials -->
+  <!-- Socials -->
+    <section id="socials">
+    <h2>Follow Justin</h2>
+    <div class="socials-container">
+        <!-- Instagram -->
+        <div class="social-card">
+        <img src="instagram.png" alt="Instagram Preview">
+        <h3>Instagram</h3>
+        <p>See Justin’s latest posts and stories 📸</p>
+        <a href="https://www.instagram.com/justinbieber/" target="_blank">Visit Instagram</a>
+        </div>
+        <!-- Website -->
+        <div class="social-card">
+        <img src="website.png" alt="Website Preview">
+        <h3>Official Website</h3>
+        <p>Tour dates, merch, and official updates 🌐</p>
+        <a href="https://www.justinbiebermusic.com/" target="_blank">Visit Website</a>
+        </div>
+        <!-- YouTube -->
+        <div class="social-card">
+        <img src="youtube.png" alt="YouTube Preview">
+        <h3>YouTube</h3>
+        <p>Watch Justin’s latest music videos 🎶</p>
+        <a href="https://www.youtube.com/user/kidrauhl" target="_blank">Visit YouTube</a>
+        </div>
+    </div>
+    </section>
+
+
+  <!-- Love Letters -->
+  <section id="love">
+    <h2>Send a Love Letter 💌</h2>
+    <p><em>Type for a surprise! ✨</em></p>
+    <div class="love-letter">
+      <textarea id="loveText" placeholder="Write your love letter here..."></textarea></br>
+      <button onclick="submitLetter()">Send</button>
+    </div>
+    <p id="letterStatus"></p>
+  </section>
+
+  <!-- Like Button -->
+  <div class="like-counter" id="likeCounter">0 Likes</div>
+  <button class="like-btn" onclick="likePage()">🤍</button>
+
+<script>
+  let likeCount = 0;
+  function likePage() {
+    likeCount++;
+    document.getElementById('likeCounter').innerText = likeCount + " Likes";
+
+    // floating hearts effect
+    let heart = document.createElement("div");
+    heart.className = "floating-heart";
+    heart.innerText = "❤️";
+    heart.style.left = (window.innerWidth - 80) + "px";
+    heart.style.bottom = "80px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 1500);
+  }
+
+  // Love Letter Submission
+  function submitLetter() {
+    document.getElementById('letterStatus').innerText = "💌 Your love letter has been sent!";
+    document.getElementById('loveText').value = "";
+  }
+
+  // Sparkles effect while typing
+  const textarea = document.getElementById('loveText');
+  textarea.addEventListener('input', () => {
+    const rect = textarea.getBoundingClientRect();
+    let sparkle = document.createElement("div");
+    sparkle.className = "sparkle";
+    sparkle.innerText = "✨";
+
+    // random x position within textarea
+    sparkle.style.left = (rect.left + Math.random() * rect.width) + "px";
+    // place it near the text baseline (just above bottom of textarea)
+    sparkle.style.top = (rect.top + rect.height - 20) + "px";
+    sparkle.style.position = "fixed"; // important so it shows on screen
+
+    document.body.appendChild(sparkle);
+
+    // remove after animation
+    setTimeout(() => sparkle.remove(), 1000);
+  });
+</script>
+
+
+
+</body>
+</html>

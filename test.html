@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Justin Bieber Fanpage</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(to bottom right, #e6ccff, #ffffff);
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    a { color: #6a0dad; text-decoration: none; transition: 0.3s; }
+    a:hover { color: #ff66cc; text-shadow: 0 0 6px #ff66cc; }
+
+    header {
+      background: linear-gradient(90deg, #c386ef, #ff66cc);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    header h1 { margin: 0; font-size: 3rem; letter-spacing: 2px; }
+    nav { margin-top: 1rem; }
+    nav a { margin: 0 15px; font-weight: bold; font-size: 1.1rem; padding: 6px 12px; border-radius: 8px; }
+    nav a:hover { background: rgba(255,255,255,0.2); transform: scale(1.1); }
+
+    /* Section cards */
+    .section {
+      margin: 50px auto;
+      max-width: 1000px;
+      background: #fff;
+      border-radius: 20px;
+      padding: 50px 20px;
+      text-align: center;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      transition: 0.3s ease-in-out;
+    }
+    .section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    .section h2 { color: #6a0dad; font-size: 2rem; margin-bottom: 20px; }
+    .section p { max-width: 700px; margin: 0 auto 15px; font-size: 1.1rem; }
+
+    /* Gallery (Slideable) */
+    .gallery-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 15px;
+      padding: 20px;
+    }
+    .gallery-container::-webkit-scrollbar { display: none; }
+    .gallery-item {
+      flex: 0 0 auto;
+      width: 300px;
+      height: 200px;
+      border-radius: 15px;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+      transition: 0.3s;
+    }
+    .gallery-item:hover { transform: scale(1.08); box-shadow: 0 8px 16px rgba(0,0,0,0.25); }
+
+    /* Slide buttons */
+    .gallery-wrapper {
+      position: relative;
+      max-width: 100%;
+      overflow: hidden;
+    }
+    .slide-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(106,13,173,0.7);
+      color: white;
+      border: none;
+      font-size: 2rem;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+    .slide-btn:hover { background: #ff66cc; transform: scale(1.2); }
+    .left { left: 10px; }
+    .right { right: 10px; }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(90deg, #d1a3f1, #ff66cc);
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>🎤 Justin Bieber Fanpage 🎶</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#updates">Updates</a>
+      <a href="#fans">Fan Zone</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <h2>💫 About Justin</h2>
+    <p>Justin Bieber is a global pop icon known for his music, performances, and loyal fanbase (Beliebers 💜). 
+    This fanpage is dedicated to celebrating his journey, music, and the worldwide community of Beliebers!</p>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="section">
+    <h2>🖼️ Justin Bieber Gallery</h2>
+    <p>Check out some of Justin’s most iconic photos from concerts, tours, and behind-the-scenes moments 🎶</p>
+    <div class="gallery-wrapper">
+      <button class="slide-btn left" onclick="scrollGallery(-1)">❮</button>
+      <div class="gallery-container" id="galleryScroll">
+        <div class="gallery-item" style="background-image: url('justin1.jpg');"></div>
+        <div class="gallery-item" style="background-image: url('justin2.jpg');"></div>
+        <div class="gallery-item" style="background-image: url('justin3.jpg');"></div>
+        <div class="gallery-item" style="background-image: url('justin4.jpg');"></div>
+        <div class="gallery-item" style="background-image: url('justin5.jpg');"></div>
+      </div>
+      <button class="slide-btn right" onclick="scrollGallery(1)">❯</button>
+    </div>
+  </section>
+
+  <!-- Updates Section -->
+  <section id="updates" class="section">
+    <h2>📖 Latest Updates</h2>
+    <p>✨ Justin’s new single is dropping soon – stay tuned for exclusive teasers and the official music video! 🎶</p>
+    <p>💜 His world tour kicks off this September – Beliebers are already buzzing with excitement!</p>
+    <p>📲 Stay updated on his official <a href="https://www.instagram.com/justinbieber/" target="_blank">Instagram</a> for real-time posts.</p>
+  </section>
+
+  <!-- Fan Zone Section -->
+  <section id="fans" class="section">
+    <h2>🎨 Fan Zone</h2>
+    <p>Welcome to the Belieber Fan Zone! 💜 Share your artwork, edits, and messages for Justin.</p>
+    <p>Some of the best fan creations will be featured here weekly!</p>
+    <p>👉 Submit via our Instagram page: <a href="https://www.instagram.com/justinbieber/" target="_blank">@justinbieber</a></p>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section">
+    <h2>📧 Contact</h2>
+    <p>Want to reach out or collaborate? We’d love to hear from you!</p>
+    <p>Email us at <a href="mailto:fanpage@justinbieber.com">fanpage@justinbieber.com</a></p>
+    <p>📱 Follow Justin directly on <a href="https://www.instagram.com/justinbieber/" target="_blank">Instagram</a> for the latest updates.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>✨ "Never Say Never" ✨</p>
+    <p>📱 Follow Justin on: <a href="https://www.instagram.com/justinbieber/" target="_blank">Instagram</a> | Twitter | YouTube</p>
+  </footer>
+
+  <!-- JS for gallery scrolling -->
+  <script>
+    function scrollGallery(direction) {
+      const gallery = document.getElementById('galleryScroll');
+      gallery.scrollBy({ left: direction * 320, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
